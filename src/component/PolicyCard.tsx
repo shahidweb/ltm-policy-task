@@ -8,10 +8,10 @@ interface Props {
 
 export default function PolicyCard({ policy }: Props) {
   return (
-    <div className="bg-[#f8f8f8] rounded-3xl p-6 md:p-8 shadow-sm border border-[#ececec]">
+    <div className="bg-white rounded-3xl p-6 md:p-8">
       <div className="md:flex justify-between gap-10">
         <div className="flex-1">
-          <h2 className="text-[20px] font-bold text-[#2450d3] mb-8">
+          <h2 className="text-2xl font-bold text-[#144ACF] mb-8">
             <span>Policy number:</span>
             <span className="text-[#222] font-normal text-2xl ml-2"> {policy.policyNumber} </span>
           </h2>
@@ -46,7 +46,7 @@ export default function PolicyCard({ policy }: Props) {
             <div className="w-px bg-[#e5e5e5] md:none" />
             <div className="space-y-4">
               <div>
-                <span className="font-bold">Plan:</span>
+                <span className="font-bold">Plan: </span>
                 <span>{policy.planName}</span>
               </div>
 
@@ -58,12 +58,12 @@ export default function PolicyCard({ policy }: Props) {
           </div>
 
           <div className="flex gap-8 my-8 md:mb-0">
-            <a href="#" className="flex items-center gap-1 text-sm underline">
+            <a href="#" className="flex items-center gap-1 text-sm underline ">
               <FiExternalLink size={14} />
               View PDS
             </a>
 
-            <a href="#" className="flex items-center gap-1 text-sm underline">
+            <a href="#" className="flex items-center gap-1 text-sm underline ">
               <FiExternalLink size={14} />
               Certificate of Insurance
             </a>
@@ -71,11 +71,11 @@ export default function PolicyCard({ policy }: Props) {
         </div>
 
         <div className="flex flex-col gap-4 min-w-41.25">
-          <button className="h-12 rounded-full bg-[#f8e08d] border-2 border-[#2d58dc] text-[#2d58dc] font-semibold">
+          <button className="h-12 rounded-full cursor-pointer bg-[#f8e08d] border-2 border-[#2d58dc] text-[#2d58dc] font-semibold">
             Make a claim
           </button>
 
-          <button className="h-12 rounded-full border-2 border-[#2d58dc] text-[#2d58dc] font-semibold bg-white">
+          <button className="h-12 rounded-full cursor-pointer border-2 border-[#2d58dc] text-[#2d58dc] font-semibold bg-white">
             Manage my policy
           </button>
         </div>
