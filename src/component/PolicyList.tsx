@@ -18,6 +18,26 @@ const PolicyList = () => {
     const start = (state.page - 1) * ITEMS_PER_PAGE;
     const paginatedPolicies = activePolicies.slice(start, start + ITEMS_PER_PAGE);
 
+    if (state.loading) {
+        return (
+            <div className="space-y-5">
+                {Array.from({ length: 3 }).map((_, index) => (
+                    <div
+                        key={index}
+                        className="bg-[#f8f8f8] rounded-3xl border border-[#ececec] p-6 md:p-8 shadow-sm animate-pulse"
+                    >
+                        <div className="h-6 w-48 rounded bg-[#e5e5e5] mb-6" />
+                        <div className="space-y-4">
+                            <div className="h-4 w-full rounded bg-[#e5e5e5]" />
+                            <div className="h-4 w-3/4 rounded bg-[#e5e5e5]" />
+                            <div className="h-4 w-5/6 rounded bg-[#e5e5e5]" />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
     return (
         <>
             <div className="space-y-5">
