@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# LTM Policy Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite project that displays travel insurance policies in a polished card layout. The app loads policy data from a local JSON file, filters active policies, sorts them by start date, and shows them with pagination.
 
-Currently, two official plugins are available:
+## How to run the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Install dependencies
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Start the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Then open the local Vite URL shown in the terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+### 3. Build for production
+
+```bash
+npm run build
+```
+
+### 4. Preview the production build
+
+```bash
+npm run preview
+```
+
+### 5. Run lint checks
+
+```bash
+npm run lint
+```
+
+## Project features
+
+- Displays a list of active policies
+- Loads data from a mock API using a local JSON file
+- Sorts policies by policy start date
+- Shows each policy in a styled card with:
+  - policy number
+  - destination
+  - policy dates or trip dates
+  - plan name
+  - excess amount
+  - links for documents
+- Supports pagination with previous/next and page-number buttons
+- Uses responsive layout styling for smaller and larger screens
+
+## Tech stack used
+
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- date-fns for date formatting
+- React Icons
+- ESLint for code quality
+
+## Project structure
+
+```text
+src/
+  api/            # API-like data fetching logic
+  component/      # Reusable UI components such as PolicyCard, PolicyList, Pagination
+  context/        # React context for policy state management
+  data/           # Local policy data in JSON format
+  hooks/          # Custom hooks
+  pages/          # Page-level components
+  types/          # TypeScript interfaces
+```
+
+## Main implementation details
+
+- The app uses a context-based state manager in [src/context/PolicyContext.tsx](src/context/PolicyContext.tsx) to hold policies and current page.
+- Policy data is fetched asynchronously from [src/api/policyApi.ts](src/api/policyApi.ts) using a delayed promise.
+- The policy list is rendered in [src/pages/MyPolicies.tsx](src/pages/MyPolicies.tsx) and [src/component/PolicyList.tsx](src/component/PolicyList.tsx).
+- Each policy card is built in [src/component/PolicyCard.tsx](src/component/PolicyCard.tsx).
+- Pagination is handled in [src/component/Pagination.tsx](src/component/Pagination.tsx).
+- The policy shape is defined in [src/types/policy.ts](src/types/policy.ts).
+
+## Notes
+
+- The app currently uses mock data from [src/data/policies.json](src/data/policies.json).
+- The project is set up to run quickly with Vite and uses modern React patterns.
