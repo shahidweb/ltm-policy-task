@@ -1,10 +1,11 @@
 import { PolicyProvider } from "./context/PolicyContext"
+import MyPolicies from "./pages/MyPolicies"
 
 function App() {
 
   return (
     <PolicyProvider>
-      <h1 className='bg-gray-300 font-bold text-blue-800'>Welcome to app </h1>
+      <MyPolicies />
     </PolicyProvider>
   )
 }
